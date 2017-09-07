@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {Hero} from './hero';
-import{HeroService} from './hero.service'
+import { Component, OnInit } from '@angular/core';
+import { Hero } from './hero';
+import { HeroService } from './hero.service'
 
 @Component({
   selector: 'app-root',
@@ -9,18 +9,17 @@ import{HeroService} from './hero.service'
   providers: [HeroService]
 })
 
-export class AppComponent  {
+export class AppComponent implements OnInit {
   title = 'Simulation Tool';
   selectedHero: Hero;
-  heroes : Hero[];
-  
+  heroes: Hero[];
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
-
   }
-  
+
   constructor(private heroService: HeroService) { }
-  
+
   getHeroes(): void {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
@@ -29,4 +28,3 @@ export class AppComponent  {
     this.getHeroes();
   }
 }
-
