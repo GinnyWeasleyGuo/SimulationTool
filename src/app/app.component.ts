@@ -18,10 +18,15 @@ export class AppComponent  {
     this.selectedHero = hero;
 
   }
-
-  constructor(private heroService: HeroService) { 
+  
+  constructor(private heroService: HeroService) { }
+  
+  getHeroes(): void {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
-  
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 }
 
