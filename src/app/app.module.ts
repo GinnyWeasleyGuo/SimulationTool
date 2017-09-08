@@ -5,17 +5,32 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
-import { HeroService }         from './hero.service';
+import { DashboardComponent } from './dashboard.component';
+import { HeroService } from './hero.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule// <-- import the FormsModule before binding with [(ngModel)]
+    FormsModule,// <-- import the FormsModule before binding with [(ngModel)]
+    RouterModule.forRoot([
+      {
+        path: 'heroes',
+        component: HeroesComponent
+      },
+      {
+        path: '',
+        redirectTo:"/dashboard",
+        pathMatch:'full',
+        component: DashboardComponent
+      }
+    ])
   ],
   declarations: [
     AppComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashboardComponent
   ],
   providers: [
     HeroService
@@ -23,3 +38,4 @@ import { HeroService }         from './hero.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
