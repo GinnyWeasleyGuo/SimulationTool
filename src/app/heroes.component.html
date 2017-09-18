@@ -2,8 +2,7 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
-    <button class="delete"
-    (click)="delete(hero); $event.stopPropagation()">x</button>
+    <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
   </li>
 </ul>
 
@@ -19,4 +18,28 @@
   <button (click)="add(heroName.value); heroName.value=''">
     Add
   </button>
+</div>
+
+<div ng-app="MyApp" ng-controller="MyController">
+  <table cellpadding="0" cellspacing="0">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+    <tbody ng-repeat="m in heroes">
+      <tr>
+        <td>{{m.id}}</td>
+        <td>{{m.name}}</td>
+        <td><input type="button" ng-click="Remove($index)" value="Remove" /></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><input type="text" ng-model="id" /></td>
+        <td><input type="text" ng-model="name" /></td>
+        <td><input type="button" ng-click="Add()" value="Add" /></td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
