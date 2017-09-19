@@ -2,8 +2,7 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
-    <button class="delete"
-    (click)="delete(hero); $event.stopPropagation()">x</button>
+    <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
   </li>
 </ul>
 
@@ -19,4 +18,28 @@
   <button (click)="add(heroName.value); heroName.value=''">
     Add
   </button>
+</div>
+
+<div>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let m of heroes">
+        <td>{{m.id}}</td>
+        <td>{{m.name}}</td>
+        <td><input type="button" (click)="delete(m)" value="Remove" /></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><input type="text" #id /></td>
+        <td><input type="text" #name/></td>
+        <td><input type="button" (click)="add(name.value)" value="Add" /></td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
