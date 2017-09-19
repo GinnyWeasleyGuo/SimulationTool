@@ -20,25 +20,25 @@
   </button>
 </div>
 
-<div ng-app="MyApp" ng-controller="MyController">
-  <table cellpadding="0" cellspacing="0">
+<div>
+  <table>
     <tr>
-      <th>id</th>
-      <th>name</th>
+      <th>Id</th>
+      <th>Name</th>
       <th></th>
     </tr>
-    <tbody ng-repeat="m in heroes">
-      <tr>
+    <tbody>
+      <tr *ngFor="let m of heroes">
         <td>{{m.id}}</td>
         <td>{{m.name}}</td>
-        <td><input type="button" ng-click="Remove($index)" value="Remove" /></td>
+        <td><input type="button" (click)="delete(m)" value="Remove" /></td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td><input type="text" ng-model="id" /></td>
-        <td><input type="text" ng-model="name" /></td>
-        <td><input type="button" ng-click="Add()" value="Add" /></td>
+        <td><input type="text" #id /></td>
+        <td><input type="text" #name/></td>
+        <td><input type="button" (click)="add(name.value)" value="Add" /></td>
       </tr>
     </tfoot>
   </table>
